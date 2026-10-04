@@ -1,4 +1,5 @@
 from smolagents import CodeAgent, InferenceClientModel, DuckDuckGoSearchTool, tool
+#from smolagents import ToolCallingAgent
 import requests
 
 model = InferenceClientModel(
@@ -68,6 +69,12 @@ def calculator(a :float, b: float, operation: str) -> float:
 
     else:
         raise ValueError("Invalid operation")
+
+# Uses JSON
+# agent = ToolCallingAgent(
+#     tools=[DuckDuckGoSearchTool(), get_weather, calculator],
+#     model=model
+# )
 
 agent = CodeAgent(
     tools=[DuckDuckGoSearchTool(),get_weather,calculator],
